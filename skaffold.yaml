@@ -1,0 +1,18 @@
+apiVersion: skaffold/v2beta9
+kind: Config
+metadata:
+  name: falabella-test-devops
+build:
+  artifacts:
+  - image: flask-hello-world
+deploy:
+#  kubectl:
+#    manifests:
+#    - k8s/flask-app_service.yml
+#    - k8s/flask-app_deployment.yml
+#    - k8s/flask-app_ingress.yml
+  helm:
+    releases:
+      - name: helm
+        chartPath: ./flask-app-chart/
+        namespace: default
